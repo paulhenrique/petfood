@@ -1,0 +1,34 @@
+.petshop {
+  list-style: none;
+  border-radius: 5px;
+  border-bottom: 3px;
+  max-width: 315px;
+  gap: 20px;
+  flex: 1;
+  align-items: center;
+  flex-shrink: 1;
+
+
+  .containerImage {
+    flex: 1 1 80px;
+
+    img {
+      border-radius: 5px;
+      min-width: 95px;
+    }
+  }
+
+  b {
+    margin-bottom: 0;
+  }
+
+  .containPetshopInfos {
+    flex: 2;
+    min-width: 192px;
+
+    .petshop-infos {
+
+      color: #626264;
+    }
+  }
+}
