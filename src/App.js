@@ -1,8 +1,9 @@
-import Cadastro from './pages/cadastro';
+import Cadastro from './pages/Cadastro';
+import Checkout from './pages/Checkout';
 function App() {
   return (
     <div className="App h-100">
-      <Cadastro />
+      <Checkout />
     </div>
   );
 }
