@@ -20,7 +20,7 @@ function Header({ whiteVersion, hideCart }) {
         <div className="col-3 text-align-right d-flex justify-content-end align-items-center">
           {!hideCart && (
             <button
-              class="btn btn-secondary ml-0"
+              className="btn btn-secondary ml-0"
               onClick={() => {
                 openDrawer();
               }}

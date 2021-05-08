@@ -3,7 +3,7 @@ import "./style.scss";
 import Dock from "react-dock";
 import Product from "../Product/list";
 function Sidebar() {
-  const [opened, setOpened] = useState(true);
+  const [opened, setOpened] = useState(false);
 
   useEffect(() => {
     window.addEventListener("openCart", () => {

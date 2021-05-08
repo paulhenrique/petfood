@@ -1,4 +1,6 @@
 .petshop-list {
   flex-flow: row nowrap;
   gap: 30px;
+  width: 100%;
+  overflow-x: auto;
 }
