@@ -1,6 +1,10 @@
 import Logo from "../../assets/logo.png";
 import LogoWhite from "../../assets/logo-white.png";
 function Header({ whiteVersion }) {
+  const openDrawer = () => {
+    const event = new CustomEvent("openCart");
+    window.dispatchEvent(event);
+  };
   return (
     <div className="container">
       <div className="row">
@@ -14,7 +18,12 @@ function Header({ whiteVersion }) {
           </header>
         </div>
         <div className="col-3 text-align-right d-flex justify-content-end align-items-center">
-          <button class="btn btn-secondary ml-0">
+          <button
+            class="btn btn-secondary ml-0"
+            onClick={() => {
+              openDrawer();
+            }}
+          >
             <span className="mdi mdi-cart pr-1"></span>
             <b>2 Itens</b>
           </button>
