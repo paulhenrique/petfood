@@ -25,9 +25,11 @@ function Petshop() {
             <label className="badge badge-primary">Frete Grátis</label>
           </div>
           <div className="col-10">
-            <h4>Produtos</h4>
+            <h4 class="mb-4">Produtos</h4>
             <div className="row">
-              <Product />
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => (
+                <Product />
+              ))}
             </div>
           </div>
         </div>

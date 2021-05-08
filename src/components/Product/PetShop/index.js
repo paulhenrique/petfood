@@ -2,7 +2,7 @@ import "./style.scss";
 
 function Product() {
   return (
-    <div className="col-md-3">
+    <div className="col-md-3 mb-5">
       <div className="containProductImage d-flex pt-4 justify-content-center position-relative">
         <img
           src="https://images-na.ssl-images-amazon.com/images/I/715aYupxI5L._AC_SX466_.jpg"
