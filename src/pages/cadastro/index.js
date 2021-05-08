@@ -1,12 +1,10 @@
-import Logo from "../../assets/logo-white.png";
 import Illustration from "../../assets/illustration.png";
+import Header from "../../components/Header";
 
 function Cadastro() {
   return (
     <div className="container-fluid h-100 bg-primary">
-      <div className="col-12">
-        <img src={Logo} alt="" />
-      </div>
+      <Header whiteVersion />
       <div className="row">
         <div className="col-6 text-right my-auto">
           <img src={Illustration} alt="Ilustração" className="img-fluid" />
