@@ -1,0 +1,28 @@
+.petshop {
+  .petshop-infos {
+    display: flex;
+    align-items: center;
+
+    span {
+      vertical-align: middle;
+      color: #626264;
+
+      &.mdi-star {
+        color: #facd5d;
+      }
+    }
+
+    b {
+      font-size: 13px;
+      margin-right: 10px;
+      vertical-align: middle;
+      color: #626264;
+    }
+
+  }
+
+  img {
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+}

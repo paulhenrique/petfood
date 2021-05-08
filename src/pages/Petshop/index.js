@@ -1,8 +1,9 @@
 import Header from "../../components/Header";
-
+import Product from "../../components/Product/PetShop";
+import "./style.scss";
 function Petshop() {
   return (
-    <div className="h-100">
+    <div className="h-100 petshop">
       <Header />
       <div className="container">
         <div className="row">
@@ -10,7 +11,7 @@ function Petshop() {
             <img
               src="https://www.petlove.com.br/static/uploads/banner_image/image/4304/logo-petlove-push.png"
               alt="Logo PetLove"
-              className="img-responsive "
+              className="img-fluid"
             />
             <b>Petlove</b>
             <div className="petshop-infos">
@@ -21,8 +22,14 @@ function Petshop() {
               <span className="mdi mdi-crosshairs-gps"></span>
               <b>2,9 km</b>
             </div>
+            <label className="badge badge-primary">Frete Grátis</label>
           </div>
-          <div className="col10"></div>
+          <div className="col-10">
+            <h4>Produtos</h4>
+            <div className="row">
+              <Product />
+            </div>
+          </div>
         </div>
       </div>
     </div>
