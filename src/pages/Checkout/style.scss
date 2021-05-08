@@ -3,5 +3,9 @@
   margin: 20px 0;
   display: inline-block;
   border-bottom: 2px solid var(--primary);
+}
 
+.box-sidebar {
+  max-height: 500px;
+  overflow-y: auto;
 }

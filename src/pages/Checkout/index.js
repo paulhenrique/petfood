@@ -113,10 +113,10 @@ function Checkout() {
             </div>
           </div>
           <div className="col-6">
-            <div className="box mb-4">
+            <div className="box mb-4 box-sidebar">
               <h4>Minha Sacola (5)</h4>
               <div className="row products">
-                <Product />
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => <Product />)}
               </div>
             </div>
           </div>
