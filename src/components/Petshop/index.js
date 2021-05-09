@@ -2,7 +2,7 @@ import "./style.scss";
 
 function Petshop() {
   return (
-    <li className="petshop d-flex align-center">
+    <li className="petshopComponent d-flex align-center">
       <div className="containerImage">
         <img
           src="https://www.petlove.com.br/static/uploads/banner_image/image/4304/logo-petlove-push.png"

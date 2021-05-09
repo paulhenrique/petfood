@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import Map from "../../components/Map";
 import Petshop from "../../components/Petshop";
@@ -12,8 +13,10 @@ function Home() {
           <h5 className="mb-5">Mais próximos de você (5)</h5>
         </div>
         <ul className="col-12 petshop-list d-flex">
-          {[1, 2, 3, 4, 5, 6].map(() => (
-            <Petshop />
+          {[1, 2, 3, 4, 5, 6].map((el) => (
+            <Link to={`/petshop/${el}`}>
+              <Petshop />
+            </Link>
           ))}
         </ul>
       </div>
