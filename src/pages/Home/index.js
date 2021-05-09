@@ -25,8 +25,9 @@ function Home() {
         <ul className="col-12 petshop-list d-flex">
           {petShops.map((el) => (
             <Link
+              key={el.id}
               style={{ textDecoration: "none", color: "#3d3d3d" }}
-              to={`/petshop/${el}`}
+              to={`/petshop/${el.id}`}
             >
               <Petshop petShop={el} />
             </Link>

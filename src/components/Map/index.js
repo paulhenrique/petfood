@@ -20,6 +20,7 @@ function Map({ petShops }) {
       >
         {petShops.map((petShop) => (
           <Marker
+            key={petShop.id}
             lat={petShop.location.lat}
             petShop={petShop}
             lng={petShop.location.lng}

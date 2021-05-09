@@ -1,22 +1,19 @@
 import "./style.scss";
 
-function Product() {
+function Product({ produto }) {
   return (
     <div className="col-md-3 mb-5 petshopProduct">
       <div className="containProductImage d-flex pt-4 justify-content-center position-relative">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/715aYupxI5L._AC_SX466_.jpg"
-          alt="Imagem da Ração"
-        />
+        <img src={produto.capa} alt={produto.nome} />
         <button className="btn btn-lg rounded-circle btn-primary position-absolute">
           +
         </button>
       </div>
       <div className="d-flex justify-content-between w-100 pt-2">
-        <label className="badge">R$ 22,90</label>
+        <label className="badge">R$ {produto.preco}</label>
       </div>
       <div className="title pt-2">
-        <b>Ração Magnus Todo Dia Sabor Carne para Cães Adultos - 15 Kg</b>
+        <b>{produto.nome}</b>
       </div>
     </div>
   );
