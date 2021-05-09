@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "concurrently": "^6.1.0",
     "google-map-react": "^2.1.9",
     "json-server": "^0.16.3",
     "react": "^17.0.2",
@@ -21,7 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch server.json"
+    "server": "json-server --watch db.json --port 80",
+    "up": "concurrently --kill-others \"yarn start\" \"yarn server\""
   },
   "eslintConfig": {
     "extends": [

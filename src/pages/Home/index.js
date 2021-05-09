@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Map from "../../components/Map";
 import Petshop from "../../components/Petshop";
 import "./style.scss";
 
 function Home() {
+  const [petShops, setPetShops] = useState([]);
+
+  const buscarPetShops = async () => {
+    const result = await fetch("http://localhost/petShops");
+    setPetShops(await result.json());
+  };
+  useEffect(() => {
+    buscarPetShops();
+  }, []);
   return (
     <div className="">
       <Header hideCart />
@@ -13,14 +23,17 @@ function Home() {
           <h5 className="mb-5">Mais próximos de você (5)</h5>
         </div>
         <ul className="col-12 petshop-list d-flex">
-          {[1, 2, 3, 4, 5, 6].map((el) => (
-            <Link to={`/petshop/${el}`}>
-              <Petshop />
+          {petShops.map((el) => (
+            <Link
+              style={{ textDecoration: "none", color: "#3d3d3d" }}
+              to={`/petshop/${el}`}
+            >
+              <Petshop petShop={el} />
             </Link>
           ))}
         </ul>
       </div>
-      <Map />
+      <Map petShops={petShops} />
     </div>
   );
 }

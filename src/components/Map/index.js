@@ -2,7 +2,7 @@ import GoogleMapReact from "google-map-react";
 import Marker from "../../components/Marker";
 import "./style.scss";
 
-function Map() {
+function Map({ petShops }) {
   return (
     <div
       style={{
@@ -18,7 +18,13 @@ function Map() {
         center={{ lat: -23.561684, lng: -46.625378 }}
         defaultZoom={15}
       >
-        <Marker lat={-23.561684} lng={-46.625378} />
+        {petShops.map((petShop) => (
+          <Marker
+            lat={petShop.location.lat}
+            petShop={petShop}
+            lng={petShop.location.lng}
+          />
+        ))}
       </GoogleMapReact>
     </div>
   );
