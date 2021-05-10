@@ -11,9 +11,12 @@ function Petshop() {
   const [petShop, setPetShop] = useState({ product: [] });
 
   const buscaPetShop = async () => {
-    const { data } = await api.get(`/petshops/${id}`);
-    console.log(data);
-    setPetShop(await data.petshop);
+    try {
+      const { data } = await api.get(`/petshops/${id}`);
+      setPetShop(await data.petshop);
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   useEffect(() => {
