@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import api from "../../services/api";
 import Header from "../../components/Header";
 import Map from "../../components/Map";
 import Petshop from "../../components/Petshop";
@@ -9,8 +10,12 @@ function Home() {
   const [petShops, setPetShops] = useState([]);
 
   const buscarPetShops = async () => {
-    const result = await fetch("http://localhost/petShops");
-    setPetShops(await result.json());
+    try {
+      const { data } = await api.get("/petshops");
+      setPetShops(await data.petshops);
+    } catch (err) {
+      console.error(err.message);
+    }
   };
   useEffect(() => {
     buscarPetShops();
@@ -25,9 +30,9 @@ function Home() {
         <ul className="col-12 petshop-list d-flex">
           {petShops.map((el) => (
             <Link
-              key={el.id}
+              key={el._id}
               style={{ textDecoration: "none", color: "#3d3d3d" }}
-              to={`/petshop/${el.id}`}
+              to={`/petshop/${el._id}`}
             >
               <Petshop petShop={el} />
             </Link>
