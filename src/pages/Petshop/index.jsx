@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import api from "../../services/api";
+
 import Header from "../../components/Header";
 import Product from "../../components/Product/PetShop";
 import "./style.scss";
 
 function Petshop() {
   const { id } = useParams();
-  const [petShop, setPetShop] = useState({ produtos: [] });
+  const [petShop, setPetShop] = useState({ product: [] });
 
   const buscaPetShop = async () => {
-    const result = await fetch(`http://localhost/petShops/${id}`);
-    setPetShop(await result.json());
+    const { data } = await api.get(`/petshops/${id}`);
+    console.log(data);
+    setPetShop(await data.petshop);
   };
 
   useEffect(() => {
@@ -43,8 +46,8 @@ function Petshop() {
             <div className="col-10">
               <h4 className="mb-4">Produtos</h4>
               <div className="row">
-                {petShop.produtos.map((produto) => (
-                  <Product key={produto.id} produto={produto} />
+                {petShop.product.map((p) => (
+                  <Product key={p._id} produto={p} />
                 ))}
               </div>
             </div>
