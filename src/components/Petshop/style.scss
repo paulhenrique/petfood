@@ -8,6 +8,14 @@
   align-items: center;
   flex-shrink: 1;
 
+  &.active,
+  &:hover {
+    cursor: pointer;
+    border-bottom: 3px solid;
+    color: var(--primary);
+    transition: 0.5s;
+    background-color: #f6f5f5;
+  }
 
   .containerImage {
     flex: 1 1 80px;

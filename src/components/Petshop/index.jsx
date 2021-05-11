@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setShopMapSelected,
   setMapCenter,
@@ -7,7 +7,7 @@ import "./style.scss";
 
 function Petshop({ petShop }) {
   const dispatch = useDispatch();
-
+  const { petshopMapSelected } = useSelector((state) => state.shop);
   const setSelectedPetShop = () => {
     dispatch(setShopMapSelected(petShop));
     dispatch(setMapCenter(petShop.location));
@@ -15,7 +15,9 @@ function Petshop({ petShop }) {
 
   return (
     <li
-      className="petshopComponent d-flex align-center"
+      className={`petshopComponent d-flex align-center ${
+        petShop._id === petshopMapSelected._id && "active"
+      }`}
       onClick={() => setSelectedPetShop()}
     >
       <div className="containerImage">
