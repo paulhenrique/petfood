@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { requestPetshops } from "../../store/modules/shop/actions";
+import { Link } from "react-router-dom";
 import api from "../../services/api";
 import Header from "../../components/Header";
 import Map from "../../components/Map";
@@ -7,6 +9,7 @@ import Petshop from "../../components/Petshop";
 import "./style.scss";
 
 function Home() {
+  const dispatch = useDispatch();
   const [petShops, setPetShops] = useState([]);
 
   const buscarPetShops = async () => {
@@ -18,7 +21,7 @@ function Home() {
     }
   };
   useEffect(() => {
-    buscarPetShops();
+    dispatch(requestPetshops());
   }, []);
   return (
     <div className="">
