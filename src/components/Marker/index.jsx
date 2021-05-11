@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import MarkerIcon from "../../assets/marker.png";
+import { Link } from "react-router-dom";
 import SelectedMarkerIcon from "../../assets/marker-selected.png";
 import "./style.scss";
 
@@ -10,12 +11,14 @@ function Marker({ petShop }) {
 
   return (
     <div>
-      <img src={logo} alt={`Logo ${nome}`} className="img-marker" />
-      <img
-        className=""
-        src={_id === petshopMapSelected ? SelectedMarkerIcon : MarkerIcon}
-        alt="Marcador do Mapa"
-      />
+      <Link to={`/petshop/${_id}`}>
+        <img src={logo} alt={`Logo ${nome}`} className="img-marker" />
+        <img
+          className=""
+          src={_id === petshopMapSelected ? SelectedMarkerIcon : MarkerIcon}
+          alt="Marcador do Mapa"
+        />
+      </Link>
     </div>
   );
 }
