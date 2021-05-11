@@ -9,14 +9,14 @@ function Petshop({ petShop }) {
   const dispatch = useDispatch();
   const { petshopMapSelected } = useSelector((state) => state.shop);
   const setSelectedPetShop = () => {
-    dispatch(setShopMapSelected(petShop));
+    dispatch(setShopMapSelected(petShop._id));
     dispatch(setMapCenter(petShop.location));
   };
 
   return (
     <li
       className={`petshopComponent d-flex align-center ${
-        petShop._id === petshopMapSelected._id && "active"
+        petShop.id === petshopMapSelected && "active"
       }`}
       onClick={() => setSelectedPetShop()}
     >
