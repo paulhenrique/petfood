@@ -16,7 +16,7 @@ function shop(state = INITIAL_STATE, action) {
     }
     case types.SET_PETSHOPS: {
       return produce(state, (draft) => {
-        draft.customer = petshops;
+        draft.petshops = action.petshops;
       });
     }
     default: {

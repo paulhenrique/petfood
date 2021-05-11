@@ -1,6 +1,6 @@
 import { takeLatest, all, call, put } from 'redux-saga/effects';
 import types from './types';
-import '../../../services/api/'
+import api from '../../../services/api';
 import { setPetshops } from './actions';
 
 export function* requestPetshops() {
@@ -10,6 +10,5 @@ export function* requestPetshops() {
 }
 
 export default all([
-  takeLatest(types.REQUEST_PETSHOPS),
-  requestPetshops
+  takeLatest(types.REQUEST_PETSHOPS, requestPetshops)
 ]);
