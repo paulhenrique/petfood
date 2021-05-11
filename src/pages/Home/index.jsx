@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { requestPetshops } from "../../store/modules/shop/actions";
-import { Link } from "react-router-dom";
-import api from "../../services/api";
 import Header from "../../components/Header";
 import Map from "../../components/Map";
 import Petshop from "../../components/Petshop";
@@ -10,16 +8,8 @@ import "./style.scss";
 
 function Home() {
   const dispatch = useDispatch();
-  const [petShops, setPetShops] = useState([]);
+  const { petshops } = useSelector((state) => state.shop);
 
-  const buscarPetShops = async () => {
-    try {
-      const { data } = await api.get("/petshops");
-      setPetShops(await data.petshops);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
   useEffect(() => {
     dispatch(requestPetshops());
   }, []);
@@ -31,18 +21,12 @@ function Home() {
           <h5 className="mb-5">Mais próximos de você (5)</h5>
         </div>
         <ul className="col-12 petshop-list d-flex">
-          {petShops.map((el) => (
-            <Link
-              key={el._id}
-              style={{ textDecoration: "none", color: "#3d3d3d" }}
-              to={`/petshop/${el._id}`}
-            >
-              <Petshop petShop={el} />
-            </Link>
+          {petshops.map((el) => (
+            <Petshop key={el._id} petShop={el} />
           ))}
         </ul>
       </div>
-      <Map petShops={petShops} />
+      <Map petShops={petshops} />
     </div>
   );
 }

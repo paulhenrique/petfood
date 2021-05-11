@@ -1,8 +1,23 @@
+import { useDispatch } from "react-redux";
+import {
+  setShopMapSelected,
+  setMapCenter,
+} from "../../store/modules/shop/actions";
 import "./style.scss";
 
 function Petshop({ petShop }) {
+  const dispatch = useDispatch();
+
+  const setSelectedPetShop = () => {
+    dispatch(setShopMapSelected(petShop));
+    dispatch(setMapCenter(petShop.location));
+  };
+
   return (
-    <li className="petshopComponent d-flex align-center">
+    <li
+      className="petshopComponent d-flex align-center"
+      onClick={() => setSelectedPetShop()}
+    >
       <div className="containerImage">
         <img
           src={petShop.logo}
