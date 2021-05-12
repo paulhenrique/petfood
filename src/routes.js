@@ -9,8 +9,8 @@ import Petshop from "./pages/Petshop";
 function Routes() {
   return (
     <>
-      <Sidebar />
       <Router>
+        <Sidebar />
         <Route path="/" exact component={Home} />
         <Route path="/cadastro" exact component={Cadastro} />
         <Route path="/checkout" exact component={Checkout} />

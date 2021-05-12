@@ -1,7 +1,10 @@
 import Logo from "../../assets/logo.png";
 import LogoWhite from "../../assets/logo-white.png";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 function Header({ whiteVersion, hideCart }) {
+  const { cart } = useSelector((state) => state.shop);
+  const productsInCart = cart.length;
   const openDrawer = () => {
     const event = new CustomEvent("openCart");
     window.dispatchEvent(event);
@@ -29,7 +32,7 @@ function Header({ whiteVersion, hideCart }) {
               }}
             >
               <span className="mdi mdi-cart pr-1"></span>
-              <b>2 Itens</b>
+              <b>{productsInCart} Itens</b>
             </button>
           )}
         </div>

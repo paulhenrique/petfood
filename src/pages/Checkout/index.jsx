@@ -1,7 +1,14 @@
 import Header from "../../components/Header";
 import Product from "../../components/Product/list";
+import { useSelector } from "react-redux";
 import "./style.scss";
 function Checkout() {
+  const { cart } = useSelector((state) => state.shop);
+  const total = cart
+    .map((e) => e.preco)
+    .reduce((a, b) => {
+      return a + b;
+    }, 0);
   return (
     <div className="h-100">
       <Header />
@@ -103,7 +110,7 @@ function Checkout() {
             <div className="row mt-4">
               <div className="col-12  d-flex justify-content-between align-items-center">
                 <b>Total</b>
-                <h3>R$ 30,00</h3>
+                <h3>R$ {total}</h3>
               </div>
               <div className="col-12">
                 <div className="btn btn-block w-100 btn-lg btn-primary">
@@ -114,9 +121,11 @@ function Checkout() {
           </div>
           <div className="col-6">
             <div className="box mb-4 box-sidebar">
-              <h4>Minha Sacola (5)</h4>
+              <h4>Minha Sacola ({cart.length})</h4>
               <div className="row products">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => <Product />)}
+                {cart.map((p) => (
+                  <Product product={p} key={p._id} />
+                ))}
               </div>
             </div>
           </div>

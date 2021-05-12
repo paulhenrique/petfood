@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./style.scss";
 import Dock from "react-dock";
 import Product from "../Product/list";
 function Sidebar() {
   const [opened, setOpened] = useState(false);
   const { cart } = useSelector((state) => state.shop);
-  const total = cart.map((e) => e.preco).reduce((a, b) => a + b);
+  const total =
+    cart.length > 0 ? cart.map((e) => e.preco).reduce((a, b) => a + b) : 0;
   useEffect(() => {
     window.addEventListener("openCart", () => {
       setOpened(true);
@@ -21,7 +23,7 @@ function Sidebar() {
       isVisible={opened}
     >
       <div className="container-fluid h-100 pt-4 sidebar">
-        <h5>Minha Sacola (5) </h5>
+        <h5>Minha Sacola ({cart.length}) </h5>
 
         <div className="row products">
           {cart.map((p) => (
@@ -34,9 +36,12 @@ function Sidebar() {
             <b>Total</b>
             <h3>R$ {total.toFixed(2)}</h3>
           </div>
-          <button className="btn btn-block btn-lg btn-primary rounded-0 h-50">
+          <Link
+            to="/checkout"
+            className="btn btn-block btn-lg btn-primary rounded-0 h-50"
+          >
             Finalizar Compra
-          </button>
+          </Link>
         </div>
       </div>
     </Dock>

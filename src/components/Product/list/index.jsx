@@ -15,11 +15,7 @@ function Product({ product }) {
     <div className="col-12 product-list">
       <div className="row">
         <div className="col-3">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/715aYupxI5L._AC_SX466_.jpg"
-            className="img-fluid"
-            alt={product.nome}
-          />
+          <img src={product.capa} className="img-fluid" alt={product.nome} />
         </div>
         <div className="col-6">
           <h6>
