@@ -1,11 +1,27 @@
+import { useDispatch, useSelector } from "react-redux";
+import { toggleCartProduct } from "../../../store/modules/shop/actions";
 import "./style.scss";
 
 function Product({ produto }) {
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.shop);
+  const isOnShoppingCart =
+    cart.findIndex((p) => p._id === produto._id) === -1 ? true : false;
+
+  const handleToggleShoppingCart = () => {
+    dispatch(toggleCartProduct(produto));
+  };
+
   return (
     <div className="col-md-3 mb-5 petshopProduct">
       <div className="containProductImage d-flex pt-4 justify-content-center position-relative">
         <img src={produto.capa} alt={produto.nome} />
-        <button className="btn btn-lg rounded-circle btn-primary position-absolute">
+        <button
+          className={`btn btn-lg rounded-circle ${
+            isOnShoppingCart ? "btn-primary" : "btn-secondary"
+          }  position-absolute`}
+          onClick={() => handleToggleShoppingCart()}
+        >
           +
         </button>
       </div>

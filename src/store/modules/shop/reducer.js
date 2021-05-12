@@ -5,7 +5,8 @@ const INITIAL_STATE = {
   petshops: [],
   petshop: {},
   petshopMapSelected: null,
-  mapCenter: { lat: -23.561684, lng: -46.625378 }
+  mapCenter: { lat: -23.561684, lng: -46.625378 },
+  cart: []
 };
 
 function shop(state = INITIAL_STATE, action) {
@@ -28,6 +29,18 @@ function shop(state = INITIAL_STATE, action) {
     case types.SET_PETSHOPS_MAP_SELECTED: {
       return produce(state, (draft) => {
         draft.petshopMapSelected = action.petshop;
+      });
+    }
+    case types.TOGGLE_CART_PRODUCT: {
+      return produce(state, (draft) => {
+        const index = draft.cart.findIndex((p) => p._id === action.product._id);
+
+        if (index === -1) {
+          draft.cart.push(action.product);
+        } else {
+          draft.cart.splice(index, 1);
+        }
+
       });
     }
 
