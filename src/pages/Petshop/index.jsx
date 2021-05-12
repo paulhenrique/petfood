@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../services/api";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +11,10 @@ function Petshop() {
   const dispatch = useDispatch();
   const { petshop } = useSelector((state) => state.shop);
 
+  const { id } = useParams();
+
   useEffect(() => {
-    dispatch(requestPetshop());
+    dispatch(requestPetshop(id));
   }, []);
 
   return (
@@ -32,7 +34,7 @@ function Petshop() {
                 <span className="mdi mdi-star"></span>
                 <b>2,8</b>
                 <span className="mdi mdi-cash-usd-outline"></span>
-                <b>$$$</b>
+                <b>{petshop.categoria}</b>
                 <span className="mdi mdi-crosshairs-gps"></span>
                 <b>2,9 km</b>
               </div>
@@ -41,9 +43,10 @@ function Petshop() {
             <div className="col-10">
               <h4 className="mb-4">Produtos</h4>
               <div className="row">
-                {petshop.product.map((p) => (
-                  <Product key={p._id} produto={p} />
-                ))}
+                {petshop &&
+                  petshop.product?.map((p) => (
+                    <Product key={p._id} produto={p} />
+                  ))}
               </div>
             </div>
           </div>

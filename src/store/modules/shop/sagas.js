@@ -9,10 +9,10 @@ export function* requestPetshops() {
   yield put(setPetshops(res.petshops));
 }
 
-export function* requestPetshop(id) {
-  const response = yield call(api.get, `/petshops/${id}`);
+export function* requestPetshop(payload) {
+  const response = yield call(api.get, `/petshops/${payload.id}`);
   const res = response.data;
-  yield put(setPetshop(res.petshops));
+  yield put(setPetshop(res.petshop));
 }
 
 export default all([
