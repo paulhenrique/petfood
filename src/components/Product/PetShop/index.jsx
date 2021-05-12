@@ -22,7 +22,7 @@ function Product({ produto }) {
           }  position-absolute`}
           onClick={() => handleToggleShoppingCart()}
         >
-          +
+          {isOnShoppingCart ? "+" : "-"}
         </button>
       </div>
       <div className="d-flex justify-content-between w-100 pt-2">

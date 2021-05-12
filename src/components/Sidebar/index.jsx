@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import "./style.scss";
 import Dock from "react-dock";
 import Product from "../Product/list";
 function Sidebar() {
   const [opened, setOpened] = useState(false);
-
+  const { cart } = useSelector((state) => state.shop);
+  const total = cart.map((e) => e.preco).reduce((a, b) => a + b);
   useEffect(() => {
     window.addEventListener("openCart", () => {
       setOpened(true);
@@ -22,15 +24,15 @@ function Sidebar() {
         <h5>Minha Sacola (5) </h5>
 
         <div className="row products">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map(() => (
-            <Product />
+          {cart.map((p) => (
+            <Product product={p} key={p._id} />
           ))}
         </div>
 
         <div className="row footer align-items-end">
           <div className="col-12 d-flex justify-content-between">
             <b>Total</b>
-            <h3>R$ 90,00</h3>
+            <h3>R$ {total.toFixed(2)}</h3>
           </div>
           <button className="btn btn-block btn-lg btn-primary rounded-0 h-50">
             Finalizar Compra

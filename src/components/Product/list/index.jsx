@@ -1,5 +1,16 @@
+import { useSelector, useDispatch } from "react-redux";
+import { toggleCartProduct } from "../../../store/modules/shop/actions";
 import "./style.scss";
-function Product() {
+function Product({ product }) {
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.shop);
+  const isOnShoppingCart =
+    cart.findIndex((p) => p._id === product._id) === -1 ? true : false;
+
+  const handleToggleShoppingCart = () => {
+    dispatch(toggleCartProduct(product));
+  };
+
   return (
     <div className="col-12 product-list">
       <div className="row">
@@ -7,22 +18,28 @@ function Product() {
           <img
             src="https://images-na.ssl-images-amazon.com/images/I/715aYupxI5L._AC_SX466_.jpg"
             className="img-fluid"
-            alt="Nome da ração"
+            alt={product.nome}
           />
         </div>
         <div className="col-6">
           <h6>
-            <label className="badge badge-primary">R$ 30,00</label>
+            <label className="badge badge-primary">{product?.preco}</label>
           </h6>
           <small>
-            <b>
-              Amazon Ração Baw Waw para cães pequeno e médio porte sabor Carne e
-              Frango 15kg
-            </b>
+            <b>{product.nome}</b>
           </small>
         </div>
         <div className="col-3">
-          <button className="btn btn-secondary rounded-circle">-</button>
+          <button
+            className={
+              isOnShoppingCart
+                ? "btn rounded-circle btn-primary"
+                : "btn rounded-circle btn-secondary"
+            }
+            onClick={() => handleToggleShoppingCart()}
+          >
+            {isOnShoppingCart ? "+" : "-"}
+          </button>
         </div>
       </div>
     </div>
